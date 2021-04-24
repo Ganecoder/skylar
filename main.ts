@@ -1,3 +1,101 @@
+music.setVolume(100)
+forever(function () {
+    if (Music == 3) {
+        music.playMelody("- A - A - A - B ", 250)
+        if (Music == 3) {
+            music.playMelody("A G F E - E - E ", 250)
+            if (Music == 3) {
+                music.playMelody("A G F D - D - D ", 250)
+                if (Music == 3) {
+                    music.playMelody("A G F G - G - G ", 250)
+                    if (Music == 3) {
+                        for (let index = 0; index < 2; index++) {
+                            if (Music == 3) {
+                                music.playMelody("E E E E - F G F ", 250)
+                                if (Music == 3) {
+                                    music.playMelody("E F D C C - E - ", 250)
+                                    if (Music == 3) {
+                                        music.playMelody("E E C C - E F E ", 250)
+                                        if (Music == 3) {
+                                            music.playMelody("F - G - A G F E ", 250)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        if (Music == 3) {
+                            for (let index = 0; index < 2; index++) {
+                                if (Music == 3) {
+                                    music.playMelody("F - E - F G E F ", 250)
+                                    if (Music == 3) {
+                                        music.playMelody("E F E - C D E D ", 250)
+                                    }
+                                }
+                            }
+                            if (Music == 3) {
+                                music.playMelody("A A G G F E D E ", 250)
+                                if (Music == 3) {
+                                    music.playMelody("G G - G F G A C5 ", 250)
+                                    pause(1000)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+})
+forever(function () {
+    if (Music == 3) {
+        music.playMelody("- A - A - A - B ", 250)
+        if (Music == 3) {
+            music.playMelody("A G F E - E - E ", 250)
+            if (Music == 3) {
+                music.playMelody("A G F D - D - D ", 250)
+                if (Music == 3) {
+                    music.playMelody("A G F G - G - G ", 250)
+                    if (Music == 3) {
+                        for (let index = 0; index < 2; index++) {
+                            if (Music == 3) {
+                                music.playMelody("A A G G - A B A ", 250)
+                                if (Music == 3) {
+                                    music.playMelody("A B G F F - A - ", 250)
+                                    if (Music == 3) {
+                                        music.playMelody("A A F F - A B A ", 250)
+                                        if (Music == 3) {
+                                            music.playMelody("C - C - C C C C ", 250)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        if (Music == 3) {
+                            for (let index = 0; index < 2; index++) {
+                                if (Music == 3) {
+                                    music.playMelody("B - A - B C5 A B ", 250)
+                                    if (Music == 3) {
+                                        music.playMelody("A B A - F A B F ", 250)
+                                    }
+                                }
+                            }
+                            if (Music == 3) {
+                                music.playMelody("A A G G F E D E ", 250)
+                                if (Music == 3) {
+                                    music.playMelody("G G - G F G A C5 ", 250)
+                                    pause(1000)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+})
+namespace SpriteKind {
+    export const objects = SpriteKind.create()
+}
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     Skylar,
@@ -775,6 +873,15 @@ controller.right.onEvent(ControllerButtonEvent.Released, function () {
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, Skylar)
 })
+scene.onOverlapTile(SpriteKind.Player, sprites.builtin.forestTiles10, function (sprite, location) {
+    tiles.setTilemap(tilemap`level20`)
+    tiles.placeOnTile(Skylar, tiles.getTileLocation(4, 6))
+    tiles.placeOnTile(furniture, tiles.getTileLocation(8, 1))
+    tiles.placeOnTile(furniture1, tiles.getTileLocation(4, 3))
+    tiles.placeOnTile(house, tiles.getTileLocation(-100, 100))
+    gargus.setFlag(SpriteFlag.Invisible, true)
+    Music = 4
+})
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     Skylar,
@@ -817,6 +924,15 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
     direction = 4
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.doorClosedSouth, function (sprite, location) {
+    tiles.setTilemap(tilemap`green plains`)
+    tiles.placeOnTile(Skylar, tiles.getTileLocation(6, 7))
+    tiles.placeOnTile(furniture, tiles.getTileLocation(8, 5))
+    tiles.placeOnTile(furniture1, tiles.getTileLocation(9, 9))
+    tiles.placeOnTile(house, tiles.getTileLocation(6, 5))
+    gargus.setFlag(SpriteFlag.Invisible, false)
+    Music = 0
 })
 controller.up.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, Skylar)
@@ -908,17 +1024,128 @@ sprites.onDestroyed(SpriteKind.Projectile, function (sprite) {
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     tiles.placeOnTile(sprite, tiles.getTileLocation(100, 100))
     enemy_health += -1
+    animation.runImageAnimation(
+    gargus,
+    [img`
+        ........................
+        ........................
+        .11..1..................
+        ..11.11.................
+        ...11.11................
+        ....11.1.111............
+        .....1111111............
+        .....1.111111...........
+        ......1.111111..........
+        .....1.12112111.........
+        .....11111111111........
+        ........1.111111........
+        ...........1111.........
+        ...........11111.......1
+        11.....11.1.111......111
+        111111111111111111111111
+        111111111111111111111111
+        111....111111111........
+        111...11111111111.......
+        11.....111111111........
+        11....1111111111........
+        11....111111111.........
+        .......1111111..........
+        .........1111...........
+        `,img`
+        ........................
+        ........................
+        .ff..f..................
+        ..ff.ff.................
+        ...ff.ff................
+        ....ff.f.fff............
+        .....fffffff............
+        .....f.ffffff...........
+        ......f.ffffff..........
+        .....f.f2ff2fff.........
+        .....fffffffffff........
+        ........1.1fffff........
+        ...........ffff.........
+        ...........1ffff.......f
+        ff.....11.1.fff......fff
+        ffffffffffffffffffffffff
+        ffffffffffffffffffffffff
+        fff....fffffffff........
+        fff...fffffffffff.......
+        ff.....fffffffff........
+        ff....ffffffffff........
+        ff....fffffffff.........
+        .......fffffff..........
+        .........ffff...........
+        `,img`
+        ........................
+        ........................
+        .11..1..................
+        ..11.11.................
+        ...11.11................
+        ....11.1.111............
+        .....1111111............
+        .....1.111111...........
+        ......1.111111..........
+        .....1.12112111.........
+        .....11111111111........
+        ........1.111111........
+        ...........1111.........
+        ...........11111.......1
+        11.....11.1.111......111
+        111111111111111111111111
+        111111111111111111111111
+        111....111111111........
+        111...11111111111.......
+        11.....111111111........
+        11....1111111111........
+        11....111111111.........
+        .......1111111..........
+        .........1111...........
+        `,img`
+        ........................
+        ........................
+        .ff..f..................
+        ..ff.ff.................
+        ...ff.ff................
+        ....ff.f.fff............
+        .....fffffff............
+        .....f.ffffff...........
+        ......f.ffffff..........
+        .....f.f2ff2fff.........
+        .....fffffffffff........
+        ........1.1fffff........
+        ...........ffff.........
+        ...........1ffff.......f
+        ff.....11.1.fff......fff
+        ffffffffffffffffffffffff
+        ffffffffffffffffffffffff
+        fff....fffffffff........
+        fff...fffffffffff.......
+        ff.....fffffffff........
+        ff....ffffffffff........
+        ff....fffffffff.........
+        .......fffffff..........
+        .........ffff...........
+        `],
+    100,
+    false
+    )
 })
 let fight = 0
 let story = 0
 let destroy = 0
 let slash = 0
 let direction = 0
+let gargus: Sprite = null
 let Skylar: Sprite = null
+let furniture1: Sprite = null
+let furniture: Sprite = null
+let house: Sprite = null
 let projectile: Sprite = null
+let Music = 0
 let title = 0
 title = 0
-let Music = 3
+Music = 3
 if (title < 1) {
     scene.setBackgroundImage(img`
         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -3170,7 +3397,9 @@ if (title < 1) {
         }
     }
 }
+music.setVolume(100)
 title = 1
+Music = 0
 scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -3294,7 +3523,6 @@ scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     `)
 tiles.setTilemap(tilemap`green plains`)
-
 let house2 = sprites.create(img`
     ....................e2e22e2e....................
     .................222eee22e2e222.................
@@ -3344,7 +3572,7 @@ let house2 = sprites.create(img`
     ....644444444c66f4e44e44e44e44ee66c444444446....
     .....64eee444c66f4e44e44e44e44ee66c444eee46.....
     ......6ccc666c66e4e44e44e44e44ee66c666ccc6......
-    `, SpriteKind.Projectile)
+    `, SpriteKind.objects)
 let house3 = sprites.create(img`
     ....................e2e22e2e....................
     .................222eee22e2e222.................
@@ -3394,7 +3622,7 @@ let house3 = sprites.create(img`
     ....644444444c66f4e44e44e44e44ee66c444444446....
     .....64eee444c66f4e44e44e44e44ee66c444eee46.....
     ......6ccc666c66e4e44e44e44e44ee66c666ccc6......
-    `, SpriteKind.Projectile)
+    `, SpriteKind.objects)
 let house4 = sprites.create(img`
     ....................e2e22e2e....................
     .................222eee22e2e222.................
@@ -3444,7 +3672,7 @@ let house4 = sprites.create(img`
     ....644444444c66f4e44e44e44e44ee66c444444446....
     .....64eee444c66f4e44e44e44e44ee66c444eee46.....
     ......6ccc666c66e4e44e44e44e44ee66c666ccc6......
-    `, SpriteKind.Projectile)  
+    `, SpriteKind.objects)
 let house5 = sprites.create(img`
     ....................e2e22e2e....................
     .................222eee22e2e222.................
@@ -3494,7 +3722,7 @@ let house5 = sprites.create(img`
     ....644444444c66f4e44e44e44e44ee66c444444446....
     .....64eee444c66f4e44e44e44e44ee66c444eee46.....
     ......6ccc666c66e4e44e44e44e44ee66c666ccc6......
-    `, SpriteKind.Projectile)       
+    `, SpriteKind.objects)
 projectile = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -3513,7 +3741,7 @@ projectile = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Projectile)
-let house = sprites.create(img`
+house = sprites.create(img`
     ....................8a8aa8a8....................
     .................aaa888aa8a8aaa.................
     ..............aaa8aa8a8aa888aa8aaa..............
@@ -3562,8 +3790,8 @@ let house = sprites.create(img`
     ....bddddddddcbbf3b33b33b33b33bebbcddddddddb....
     .....bdbbbdddcbbf3b33b33b33b33bebbcdddbbbdb.....
     ......bcccbbbcbbe3b33b33b33b33bebbcbbbcccb......
-    `, SpriteKind.Projectile)
-let furniture = sprites.create(img`
+    `, SpriteKind.objects)
+furniture = sprites.create(img`
     .cccccccccccccc.
     cbddddddddddddbc
     cddddddddddddddc
@@ -3588,8 +3816,8 @@ let furniture = sprites.create(img`
     fdcbbddddddbbcdf
     fdffffffffffffdf
     ffffffffffffffff
-    `, SpriteKind.Projectile)
-let furniture1 = sprites.create(img`
+    `, SpriteKind.objects)
+furniture1 = sprites.create(img`
     ..cccccccccccccccccccccccccccc..
     .bddddddddddddddddddddddddddddb.
     cddddddddddddddddddddddddddddddc
@@ -3614,7 +3842,7 @@ let furniture1 = sprites.create(img`
     ..cbbc....................cbbc..
     ..c33c....................c33c..
     ...cc......................cc...
-    `, SpriteKind.Projectile)
+    `, SpriteKind.objects)
 Skylar = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -3669,7 +3897,7 @@ let garb = sprites.create(img`
     . . f f f 7 7 f f 7 7 f f f . . 
     . . . . f f f . . f f . . . . . 
     `, SpriteKind.Enemy)
-let gargus = sprites.create(img`
+gargus = sprites.create(img`
     ........................
     ........................
     .ff..f..................
@@ -3716,6 +3944,154 @@ slash = 0
 destroy = 0
 info.setLife(3)
 forever(function () {
+    if (Music == 4) {
+        music.playMelody("G G - - - - D D ", 300)
+        if (Music == 4) {
+            music.playMelody("F F - - - - E E ", 300)
+            if (Music == 4) {
+                music.playMelody("E D D - - A B B ", 300)
+                if (Music == 4) {
+                    music.playMelody("A G G - - F A A ", 300)
+                    if (Music == 4) {
+                        music.playMelody("E D D - - D F F ", 300)
+                    }
+                }
+            }
+        }
+    }
+})
+forever(function () {
+    if (Music == 2) {
+        music.playMelody("A G A G A G A G ", 274)
+        if (Music == 2) {
+            music.playMelody("B A B A B A B A ", 274)
+            if (Music == 2) {
+                music.playMelody("A G A G A G A G ", 274)
+                if (Music == 2) {
+                    music.playMelody("B A B A B A B A ", 274)
+                    pause(100)
+                    if (Music == 2) {
+                        music.playMelody("F E - D - F E D ", 274)
+                        pause(1000)
+                    }
+                }
+            }
+        }
+    }
+})
+forever(function () {
+    if (Music == 2) {
+        music.playMelody("E G E G E G E G ", 274)
+        if (Music == 2) {
+            music.playMelody("F A F A F A F A ", 274)
+            if (Music == 2) {
+                music.playMelody("E G E G E G E G ", 274)
+                if (Music == 2) {
+                    music.playMelody("F A F A F A F A ", 274)
+                    pause(100)
+                    if (Music == 2) {
+                        music.playMelody("A G - F - A G F ", 274)
+                        pause(1000)
+                    }
+                }
+            }
+        }
+    }
+})
+forever(function () {
+    if (Music == 0) {
+        pause(100)
+        music.playMelody("D - A - - C - - ", 170)
+        if (Music == 0) {
+            pause(500)
+            music.playMelody("D - A - - C - E ", 170)
+            if (Music == 0) {
+                pause(1000)
+                pause(100)
+                music.playMelody("D - A - - C - - ", 170)
+                if (Music == 0) {
+                    pause(500)
+                    music.playMelody("D - A - - C - E ", 170)
+                    if (Music == 0) {
+                        pause(500)
+                        music.playMelody("G F - - - - - A ", 170)
+                        if (Music == 0) {
+                            pause(1000)
+                            music.playMelody("D - - - - - G - ", 170)
+                            if (Music == 0) {
+                                music.playMelody("G - - - - - - - ", 170)
+                                pause(2000)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+})
+forever(function () {
+    if (Music == 0) {
+        pause(100)
+        music.playMelody("G - F G - E F D ", 170)
+        if (Music == 0) {
+            pause(500)
+            music.playMelody("G - F G - E F G ", 170)
+            if (Music == 0) {
+                pause(1000)
+                pause(100)
+                music.playMelody("G - F G - E F D ", 170)
+                if (Music == 0) {
+                    pause(500)
+                    music.playMelody("G - F G - E F G ", 170)
+                    if (Music == 0) {
+                        pause(500)
+                        music.playMelody("- - E F E F G F ", 170)
+                        if (Music == 0) {
+                            pause(1000)
+                            music.playMelody("G - - - - C5 - C5 ", 170)
+                            if (Music == 0) {
+                                music.playMelody("- C5 - - - - - - ", 170)
+                                pause(2000)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+})
+forever(function () {
+    if (Music == 0) {
+        pause(100)
+        music.playMelody("B - - E - - - - ", 170)
+        if (Music == 0) {
+            pause(500)
+            music.playMelody("B - - E - - - - ", 170)
+            if (Music == 0) {
+                pause(1000)
+                pause(100)
+                music.playMelody("B - - E - - - - ", 170)
+                if (Music == 0) {
+                    pause(500)
+                    music.playMelody("B - - E - - - - ", 170)
+                    if (Music == 0) {
+                        pause(500)
+                        music.playMelody("- - E F E F G F ", 170)
+                        if (Music == 0) {
+                            pause(1000)
+                            music.playMelody("B - - - - - C5 - ", 170)
+                            if (Music == 0) {
+                                music.playMelody("C5 - - - - - - - ", 170)
+                                pause(2000)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+})
+forever(function () {
     if (Skylar.overlapsWith(gargus)) {
         if (story == 0) {
             if (fight == 0) {
@@ -3725,14 +4101,19 @@ forever(function () {
                 tiles.placeOnTile(house, tiles.getTileLocation(100, 0))
                 tiles.placeOnTile(furniture, tiles.getTileLocation(100, 0))
                 slash = 1
-                pause(100)
                 fight = 1
+                Music = 2
+                info.setLife(3)
             }
-            if (fight == 1) {
-                info.changeLifeBy(-1)
-                music.jumpDown.play()
-                pause(1000)
-            }
+        }
+    }
+})
+forever(function () {
+    if (Skylar.overlapsWith(gargus)) {
+        if (fight == 1) {
+            info.changeLifeBy(-1)
+            music.jumpDown.play()
+            pause(2000)
         }
     }
 })
@@ -3741,105 +4122,30 @@ forever(function () {
         if (story == 0) {
             enemy_health = 10
             story = 1
+            Music = 0
+            fight = 0
+            slash = 0
             tiles.setTilemap(tilemap`green plains`)
+            controller.moveSprite(Skylar, 0, 0)
             tiles.placeOnTile(Skylar, tiles.getTileLocation(36, 20))
-            tiles.placeOnTile(gargus, tiles.getTileLocation(100, 20))
+            tiles.placeOnTile(gargus, tiles.getTileLocation(39, 20))
             tiles.placeOnTile(furniture, tiles.getTileLocation(8, 5))
             tiles.placeOnTile(house, tiles.getTileLocation(6, 5))
-        }
-    }
-})
-forever(function () {
-    if (Music == 3) {
-        music.playMelody("- A - A - A - B ", 250)
-        if (Music == 3) {
-            music.playMelody("A G F E - E - E ", 250)
-            if (Music == 3) {
-                music.playMelody("A G F D - D - D ", 250)
-                if (Music == 3) {
-                    music.playMelody("A G F G - G - G ", 250)
-                    if (Music == 3) {
-                        for (let index = 0; index < 2; index++) {
-                            if (Music == 3) {
-                                music.playMelody("E E E E - F G F ", 250)
-                                if (Music == 3) {
-                                    music.playMelody("E F D C C - E - ", 250)
-                                    if (Music == 3) {
-                                        music.playMelody("E E C C - E F E ", 250)
-                                        if (Music == 3) {
-                                            music.playMelody("F - G - A G F E ", 250)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        if (Music == 3) {
-                            for (let index = 0; index < 2; index++) {
-                                if (Music == 3) {
-                                    music.playMelody("F - E - F G E F ", 250)
-                                    if (Music == 3) {
-                                        music.playMelody("E F E - C D E D ", 250)
-                                    }
-                                }
-                            }
-                            if (Music == 3) {
-                                music.playMelody("A A G G F E D E ", 250)
-                                if (Music == 3) {
-                                    music.playMelody("G G - G F G A C5 ", 250)
-                                    pause(1000)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-})
-forever(function () {
-    if (Music == 3) {
-        music.playMelody("- A - A - A - B ", 250)
-        if (Music == 3) {
-            music.playMelody("A G F E - E - E ", 250)
-            if (Music == 3) {
-                music.playMelody("A G F D - D - D ", 250)
-                if (Music == 3) {
-                    music.playMelody("A G F G - G - G ", 250)
-                    if (Music == 3) {
-                        for (let index = 0; index < 2; index++) {
-                            if (Music == 3) {
-                                music.playMelody("A A G G - A B A ", 250)
-                                if (Music == 3) {
-                                    music.playMelody("A B G F F - A - ", 250)
-                                    if (Music == 3) {
-                                        music.playMelody("A A F F - A B A ", 250)
-                                        if (Music == 3) {
-                                            music.playMelody("C - C - C C C C ", 250)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        if (Music == 3) {
-                            for (let index = 0; index < 2; index++) {
-                                if (Music == 3) {
-                                    music.playMelody("B - A - B C5 A B ", 250)
-                                    if (Music == 3) {
-                                        music.playMelody("A B A - F A B F ", 250)
-                                    }
-                                }
-                            }
-                            if (Music == 3) {
-                                music.playMelody("A A G G F E D E ", 250)
-                                if (Music == 3) {
-                                    music.playMelody("G G - G F G A C5 ", 250)
-                                    pause(1000)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            gargus.setVelocity(0, 0)
+            pause(2000)
+            gargus.vy = -100
+            gargus.ay = 100
+            pause(1000)
+            gargus.vy = 0
+            gargus.ay = 0
+            pause(100)
+            gargus.vy = -50
+            gargus.vx = 100
+            pause(2000)
+            gargus.vy = 0
+            gargus.vx = 0
+            tiles.placeOnTile(gargus, tiles.getTileLocation(100, 100))
+            controller.moveSprite(Skylar, 100, 100)
         }
     }
 })
@@ -3853,5 +4159,22 @@ forever(function () {
         pause(2500)
         gargus.setVelocity(-30, -30)
         pause(2500)
+    }
+})
+forever(function () {
+    if (Music == 4) {
+        music.playMelody("B B - - - - F F ", 300)
+        if (Music == 4) {
+            music.playMelody("A A - - - - G G ", 300)
+            if (Music == 4) {
+                music.playMelody("A G G - - F G G ", 300)
+                if (Music == 4) {
+                    music.playMelody("F E E - - D F F ", 300)
+                    if (Music == 4) {
+                        music.playMelody("G F F - - D A A ", 300)
+                    }
+                }
+            }
+        }
     }
 })
