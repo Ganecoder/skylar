@@ -830,6 +830,11 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     )
     direction = 4
 })
+sprites.onOverlap(SpriteKind.hero, SpriteKind.Food, function (sprite, otherSprite) {
+    tiles.placeOnTile(otherSprite, tiles.getTileLocation(100, 0))
+    health += 1
+    heart_place = 0
+})
 sprites.onOverlap(SpriteKind.sword, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (projectile.overlapsWith(gargus)) {
         animation.runImageAnimation(
@@ -1123,12 +1128,17 @@ scene.onOverlapTile(SpriteKind.hero, sprites.builtin.forestTiles10, function (sp
     tiles.placeOnTile(house, tiles.getTileLocation(-100, 100))
     gargus.setFlag(SpriteFlag.Invisible, true)
     Music = 4
+    if (heart_place == 1) {
+        tiles.placeOnTile(heart, tiles.getTileLocation(4, 4))
+    }
 })
 let story = 0
 let fight = 0
 let destroy = 0
 let slash = 0
+let heart_place = 0
 let direction = 0
+let heart: Sprite = null
 let gargus: Sprite = null
 let garb: Sprite = null
 let Skylar: Sprite = null
@@ -3936,6 +3946,24 @@ gargus = sprites.create(img`
     .......fffffff..........
     .........11ff...........
     `, SpriteKind.Enemy)
+heart = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . f f f f f . f f f f f . . 
+    . . f f 3 3 3 f f f 3 3 3 f f . 
+    . . f 3 3 3 3 3 f 3 3 3 3 3 f . 
+    . . f 3 3 3 3 3 3 3 1 1 3 3 f . 
+    . . f 3 3 3 3 3 3 3 1 1 3 3 f . 
+    . . f 3 3 3 3 3 3 3 3 3 3 3 f . 
+    . . f f 3 3 3 b b b 3 3 3 f f . 
+    . . . f f 3 b b b b b 3 f f . . 
+    . . . . f f b b b b b f f . . . 
+    . . . . . f f b b b f f . . . . 
+    . . . . . . f f b f f . . . . . 
+    . . . . . . . f f f . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Food)
 tiles.placeOnTile(Skylar, tiles.getTileLocation(9, 25))
 tiles.placeOnTile(house5, tiles.getTileLocation(60, 10))
 tiles.placeOnTile(house4, tiles.getTileLocation(50, 11))
@@ -3948,11 +3976,13 @@ tiles.placeOnTile(projectile, tiles.getTileLocation(100, 100))
 tiles.placeOnTile(house, tiles.getTileLocation(6, 5))
 tiles.placeOnTile(furniture, tiles.getTileLocation(8, 5))
 tiles.placeOnTile(furniture1, tiles.getTileLocation(9, 9))
+tiles.placeOnTile(heart, tiles.getTileLocation(100, 9))
 scene.cameraFollowSprite(Skylar)
 controller.moveSprite(Skylar)
 direction = 0
 let enemy_health = 10
-let health = 3
+let health = 1
+heart_place = 0
 slash = 0
 destroy = 0
 info.setLife(3)
@@ -4193,7 +4223,6 @@ forever(function () {
                 slash = 1
                 fight = 1
                 Music = 2
-                info.setLife(3)
             }
         }
     }
@@ -4211,7 +4240,6 @@ forever(function () {
                 slash = 1
                 fight = 1
                 Music = 2
-                info.setLife(3)
             }
         }
     }
@@ -4228,8 +4256,29 @@ forever(function () {
                 slash = 1
                 fight = 1
                 Music = 2
-                info.setLife(3)
             }
+        }
+    }
+})
+forever(function () {
+    if (fight == 0) {
+        if (health == 1) {
+            info.setLife(3)
+        }
+        if (health == 2) {
+            info.setLife(4)
+        }
+        if (health == 3) {
+            info.setLife(5)
+        }
+        if (health == 4) {
+            info.setLife(6)
+        }
+        if (health == 5) {
+            info.setLife(7)
+        }
+        if (health == 6) {
+            info.setLife(8)
         }
     }
 })
@@ -4254,33 +4303,61 @@ forever(function () {
 forever(function () {
     if (fight == 1 && story == 2) {
         gargus.setVelocity(-50, 0)
+        pause(1000)
+        gargus.setVelocity(0, 100)
         pause(500)
-        gargus.setVelocity(0, 50)
-        pause(500)
-        gargus.setVelocity(0, -50)
-        pause(500)
-        gargus.setVelocity(-50, 0)
-        pause(500)
-        gargus.setVelocity(0, 50)
-        pause(500)
-        gargus.setVelocity(0, -50)
+        gargus.setVelocity(0, -100)
         pause(500)
         gargus.setVelocity(-50, 0)
-        pause(100)
-        gargus.setVelocity(0, 50)
+        pause(1000)
+        gargus.setVelocity(0, 100)
+        pause(500)
+        gargus.setVelocity(0, -100)
         pause(500)
         gargus.setVelocity(-50, 0)
+        pause(200)
+        gargus.setVelocity(0, 50)
+        pause(1000)
+        gargus.setVelocity(100, 0)
+        pause(500)
+        gargus.setVelocity(-100, 0)
+        pause(500)
+        gargus.setVelocity(0, 50)
+        pause(1000)
+        gargus.setVelocity(-100, 0)
+        pause(500)
+        gargus.setVelocity(100, 0)
+        pause(500)
+        gargus.setVelocity(0, 50)
+        pause(200)
+        gargus.setVelocity(50, 0)
+        pause(1000)
+        gargus.setVelocity(0, -100)
+        pause(500)
+        gargus.setVelocity(0, 100)
         pause(500)
         gargus.setVelocity(50, 0)
+        pause(1000)
+        gargus.setVelocity(0, -100)
         pause(500)
-        gargus.setVelocity(0, 50)
-        pause(500)
-        gargus.setVelocity(-50, 0)
+        gargus.setVelocity(0, 100)
         pause(500)
         gargus.setVelocity(50, 0)
+        pause(200)
+        gargus.setVelocity(0, -50)
+        pause(1000)
+        gargus.setVelocity(-100, 0)
         pause(500)
-        gargus.setVelocity(0, 50)
-        pause(100)
+        gargus.setVelocity(100, 0)
+        pause(500)
+        gargus.setVelocity(0, -50)
+        pause(1000)
+        gargus.setVelocity(100, 0)
+        pause(500)
+        gargus.setVelocity(-100, 0)
+        pause(500)
+        gargus.setVelocity(0, -50)
+        pause(200)
     }
 })
 forever(function () {
@@ -4331,6 +4408,38 @@ forever(function () {
 })
 forever(function () {
     if (enemy_health == 0) {
+        if (story == 2) {
+            enemy_health = 10
+            heart_place = 1
+            story = 3
+            Music = 0
+            fight = 0
+            slash = 0
+            tiles.setTilemap(tilemap`green plains`)
+            controller.moveSprite(Skylar, 0, 0)
+            tiles.placeOnTile(Skylar, tiles.getTileLocation(58, 13))
+            tiles.placeOnTile(gargus, tiles.getTileLocation(61, 12))
+            tiles.placeOnTile(furniture, tiles.getTileLocation(8, 5))
+            tiles.placeOnTile(house, tiles.getTileLocation(6, 5))
+            gargus.setVelocity(0, 0)
+            pause(2000)
+            gargus.setVelocity(50, 0)
+            pause(2000)
+            tiles.placeOnTile(gargus, tiles.getTileLocation(100, 100))
+            pause(2000)
+            tiles.placeOnTile(quinn, tiles.getTileLocation(56, 14))
+            quinn.setFlag(SpriteFlag.Invisible, false)
+            pause(2000)
+            game.showLongText("Thank you so much for helping our town!", DialogLayout.Bottom)
+            game.showLongText("My name is Quinn. Happy to know ya. ", DialogLayout.Bottom)
+            game.showLongText("Just to let you know, when you get a big achievement you can go to your house for a reward. ", DialogLayout.Bottom)
+            tiles.placeOnTile(quinn, tiles.getTileLocation(100, 100))
+            controller.moveSprite(Skylar, 100, 100)
+        }
+    }
+})
+forever(function () {
+    if (enemy_health == 0) {
         if (story == 0) {
             enemy_health = 10
             story = 1
@@ -4342,32 +4451,6 @@ forever(function () {
             tiles.placeOnTile(Skylar, tiles.getTileLocation(36, 20))
             tiles.placeOnTile(garb, tiles.getTileLocation(58, 14))
             tiles.placeOnTile(gargus, tiles.getTileLocation(39, 20))
-            tiles.placeOnTile(furniture, tiles.getTileLocation(8, 5))
-            tiles.placeOnTile(house, tiles.getTileLocation(6, 5))
-            gargus.setVelocity(0, 0)
-            pause(2000)
-            gargus.setVelocity(0, 50)
-            pause(1000)
-            gargus.setVelocity(50, 0)
-            pause(2000)
-            gargus.setVelocity(0, 0)
-            tiles.placeOnTile(gargus, tiles.getTileLocation(100, 100))
-            controller.moveSprite(Skylar, 100, 100)
-        }
-    }
-})
-forever(function () {
-    if (enemy_health == 0) {
-        if (story == 2) {
-            enemy_health = 10
-            story = 3
-            Music = 0
-            fight = 0
-            slash = 0
-            tiles.setTilemap(tilemap`green plains`)
-            controller.moveSprite(Skylar, 0, 0)
-            tiles.placeOnTile(Skylar, tiles.getTileLocation(58, 13))
-            tiles.placeOnTile(gargus, tiles.getTileLocation(61, 12))
             tiles.placeOnTile(furniture, tiles.getTileLocation(8, 5))
             tiles.placeOnTile(house, tiles.getTileLocation(6, 5))
             gargus.setVelocity(0, 0)
