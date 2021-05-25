@@ -4500,3 +4500,4 @@ forever(function () {
         gargus.setVelocity(0, -50)
     }
 })
+pause(1000)
