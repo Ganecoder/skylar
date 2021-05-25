@@ -1,3 +1,97 @@
+forever(function () {
+    if (Music == 3) {
+        music.playMelody("- A - A - A - B ", 250)
+        if (Music == 3) {
+            music.playMelody("A G F E - E - E ", 250)
+            if (Music == 3) {
+                music.playMelody("A G F D - D - D ", 250)
+                if (Music == 3) {
+                    music.playMelody("A G F G - G - G ", 250)
+                    if (Music == 3) {
+                        for (let index = 0; index < 2; index++) {
+                            if (Music == 3) {
+                                music.playMelody("E E E E - F G F ", 250)
+                                if (Music == 3) {
+                                    music.playMelody("E F D C C - E - ", 250)
+                                    if (Music == 3) {
+                                        music.playMelody("E E C C - E F E ", 250)
+                                        if (Music == 3) {
+                                            music.playMelody("F - G - A G F E ", 250)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        if (Music == 3) {
+                            for (let index = 0; index < 2; index++) {
+                                if (Music == 3) {
+                                    music.playMelody("F - E - F G E F ", 250)
+                                    if (Music == 3) {
+                                        music.playMelody("E F E - C D E D ", 250)
+                                    }
+                                }
+                            }
+                            if (Music == 3) {
+                                music.playMelody("A A G G F E D E ", 250)
+                                if (Music == 3) {
+                                    music.playMelody("G G - G F G A C5 ", 250)
+                                    pause(1000)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+})
+forever(function () {
+    if (Music == 3) {
+        music.playMelody("- A - A - A - B ", 250)
+        if (Music == 3) {
+            music.playMelody("A G F E - E - E ", 250)
+            if (Music == 3) {
+                music.playMelody("A G F D - D - D ", 250)
+                if (Music == 3) {
+                    music.playMelody("A G F G - G - G ", 250)
+                    if (Music == 3) {
+                        for (let index = 0; index < 2; index++) {
+                            if (Music == 3) {
+                                music.playMelody("A A G G - A B A ", 250)
+                                if (Music == 3) {
+                                    music.playMelody("A B G F F - A - ", 250)
+                                    if (Music == 3) {
+                                        music.playMelody("A A F F - A B A ", 250)
+                                        if (Music == 3) {
+                                            music.playMelody("C - C - C C C C ", 250)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        if (Music == 3) {
+                            for (let index = 0; index < 2; index++) {
+                                if (Music == 3) {
+                                    music.playMelody("B - A - B C5 A B ", 250)
+                                    if (Music == 3) {
+                                        music.playMelody("A B A - F A B F ", 250)
+                                    }
+                                }
+                            }
+                            if (Music == 3) {
+                                music.playMelody("A A G G F E D E ", 250)
+                                if (Music == 3) {
+                                    music.playMelody("G G - G F G A C5 ", 250)
+                                    pause(1000)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+})
 namespace SpriteKind {
     export const objects = SpriteKind.create()
     export const sword = SpriteKind.create()
@@ -1146,7 +1240,7 @@ let furniture1: Sprite = null
 let furniture: Sprite = null
 let house: Sprite = null
 let projectile: Sprite = null
-let Music = 0
+let Music = 3
 let title = 0
 music.setVolume(100)
 title = 0
@@ -3986,100 +4080,6 @@ heart_place = 0
 slash = 0
 destroy = 0
 info.setLife(3)
-forever(function () {
-    if (Music == 3) {
-        music.playMelody("- A - A - A - B ", 250)
-        if (Music == 3) {
-            music.playMelody("A G F E - E - E ", 250)
-            if (Music == 3) {
-                music.playMelody("A G F D - D - D ", 250)
-                if (Music == 3) {
-                    music.playMelody("A G F G - G - G ", 250)
-                    if (Music == 3) {
-                        for (let index = 0; index < 2; index++) {
-                            if (Music == 3) {
-                                music.playMelody("E E E E - F G F ", 250)
-                                if (Music == 3) {
-                                    music.playMelody("E F D C C - E - ", 250)
-                                    if (Music == 3) {
-                                        music.playMelody("E E C C - E F E ", 250)
-                                        if (Music == 3) {
-                                            music.playMelody("F - G - A G F E ", 250)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        if (Music == 3) {
-                            for (let index = 0; index < 2; index++) {
-                                if (Music == 3) {
-                                    music.playMelody("F - E - F G E F ", 250)
-                                    if (Music == 3) {
-                                        music.playMelody("E F E - C D E D ", 250)
-                                    }
-                                }
-                            }
-                            if (Music == 3) {
-                                music.playMelody("A A G G F E D E ", 250)
-                                if (Music == 3) {
-                                    music.playMelody("G G - G F G A C5 ", 250)
-                                    pause(1000)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-})
-forever(function () {
-    if (Music == 3) {
-        music.playMelody("- A - A - A - B ", 250)
-        if (Music == 3) {
-            music.playMelody("A G F E - E - E ", 250)
-            if (Music == 3) {
-                music.playMelody("A G F D - D - D ", 250)
-                if (Music == 3) {
-                    music.playMelody("A G F G - G - G ", 250)
-                    if (Music == 3) {
-                        for (let index = 0; index < 2; index++) {
-                            if (Music == 3) {
-                                music.playMelody("A A G G - A B A ", 250)
-                                if (Music == 3) {
-                                    music.playMelody("A B G F F - A - ", 250)
-                                    if (Music == 3) {
-                                        music.playMelody("A A F F - A B A ", 250)
-                                        if (Music == 3) {
-                                            music.playMelody("C - C - C C C C ", 250)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        if (Music == 3) {
-                            for (let index = 0; index < 2; index++) {
-                                if (Music == 3) {
-                                    music.playMelody("B - A - B C5 A B ", 250)
-                                    if (Music == 3) {
-                                        music.playMelody("A B A - F A B F ", 250)
-                                    }
-                                }
-                            }
-                            if (Music == 3) {
-                                music.playMelody("A A G G F E D E ", 250)
-                                if (Music == 3) {
-                                    music.playMelody("G G - G F G A C5 ", 250)
-                                    pause(1000)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-})
 forever(function () {
     if (Music == 2) {
         music.playMelody("A G A G A G A G ", 274)
