@@ -3910,6 +3910,24 @@ garb = sprites.create(img`
     . . f f f 7 7 f f 7 7 f f f . . 
     . . . . f f f . . f f . . . . . 
     `, SpriteKind.Enemy)
+let garg = sprites.create(img`
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . .
+    . . . . f f f f f f f f . . . .
+    . . . f 6 6 6 6 6 6 6 6 f . . .
+    . . f 6 1 9 6 6 6 6 9 1 6 f . .
+    . . f 6 1 f 6 d d 6 f 1 6 f . .
+    . . f 6 6 6 6 d d 6 6 6 6 f . .
+    . . f f 6 6 6 6 6 6 6 6 f f . .
+    . f 6 6 4 4 6 6 6 6 4 4 6 6 f .
+    f 6 6 6 4 4 4 6 6 4 6 4 6 6 6 f
+    f 6 6 f 4 4 4 4 4 6 4 4 f 6 6 f
+    f 6 6 6 4 4 4 4 4 4 4 4 6 6 6 f
+    . f 6 6 4 4 4 4 4 4 4 4 6 6 f .
+    . . f f f 4 4 f f 4 4 f f f . .
+    . . . . f f f . . f f . . . . .
+`, SpriteKind.Enemy)
 gargus = sprites.create(img`
     ........................
     ........................
@@ -3943,6 +3961,7 @@ tiles.placeOnTile(house2, tiles.getTileLocation(61, 19))
 tiles.placeOnTile(house3, tiles.getTileLocation(46, 18))
 tiles.placeOnTile(quinn, tiles.getTileLocation(100, 100))
 tiles.placeOnTile(garb, tiles.getTileLocation(-100, 100))
+tiles.placeOnTile(garg, tiles.getTileLocation(-100, 100))
 tiles.placeOnTile(gargus, tiles.getTileLocation(36, 19))
 tiles.placeOnTile(projectile, tiles.getTileLocation(100, 100))
 tiles.placeOnTile(house, tiles.getTileLocation(6, 5))
