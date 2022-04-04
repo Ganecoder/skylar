@@ -3490,7 +3490,7 @@ if (title < 1) {
                                                                                         }
                                                                                         if (title < 1) {
                                                                                             pause(1000)
-                                                                                            game.showLongText("Press the A brutton to start!", DialogLayout.Bottom)
+                                                                                            game.showLongText("Press the A button to start!", DialogLayout.Bottom)
                                                                                         }
                                                                                     }
                                                                                 }
